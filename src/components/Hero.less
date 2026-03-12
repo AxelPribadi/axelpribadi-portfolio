@@ -1,0 +1,44 @@
+@import '../styles/variables.less';
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+
+  &__greeting {
+    font-family: @font-mono;
+    font-size: 0.82rem;
+    color: @color-accent;
+    letter-spacing: 0.16em;
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+
+  &__name {
+    font-size: clamp(3.5rem, 10vw, 6.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -3px;
+    background: linear-gradient(135deg, var(--color-text) 55%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+  }
+
+  &__tagline {
+    font-size: 1.1rem;
+    color: @color-text;
+    max-width: 480px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+    text-shadow: 0 1px 16px var(--color-bg);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+}

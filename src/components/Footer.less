@@ -1,0 +1,116 @@
+@import '../styles/variables.less';
+
+.footer {
+  padding: 48px 0 32px;
+  background: @color-bg;
+  border-top: 1px solid @color-border;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  // ── Brand ──────────────────────────────────────────────────────
+  &__logo {
+    font-family: @font-mono;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: @color-text-muted;
+
+    span {
+      color: @color-accent;
+    }
+  }
+
+  &__tagline {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: @color-text-dim;
+    font-family: @font-mono;
+  }
+
+  // ── Nav & Social ───────────────────────────────────────────────
+  &__nav-label {
+    display: block;
+    font-family: @font-mono;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: @color-text-muted;
+    margin-bottom: 12px;
+  }
+
+  &__nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: @color-text-dim;
+      text-decoration: none;
+      font-family: @font-mono;
+      transition: color @transition;
+
+      &:hover {
+        color: @color-accent;
+      }
+    }
+  }
+
+  &__social {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      color: @color-text-muted;
+      text-decoration: none;
+      transition: color @transition;
+
+      svg {
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        color: @color-accent;
+      }
+    }
+  }
+
+  // ── Copyright ──────────────────────────────────────────────────
+  &__copy {
+    margin-top: 20px;
+    font-size: 0.75rem;
+    font-family: @font-mono;
+    color: @color-text-dim;
+  }
+
+  // ── Responsive ─────────────────────────────────────────────────
+  @media (max-width: 640px) {
+    &__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__brand {
+      grid-column: 1 / -1;
+    }
+  }
+}

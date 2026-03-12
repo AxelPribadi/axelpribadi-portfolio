@@ -1,0 +1,277 @@
+@import './variables.less';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: @font-base;
+  background-color: @color-bg;
+  color: @color-text;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: @color-batik;
+    mask-image: url('../assets/batik_kawung.svg');
+    mask-size: 150px 150px;
+    mask-repeat: repeat;
+    opacity: 0.07;
+  }
+}
+
+nav, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: @color-accent;
+  text-decoration: none;
+  transition: color @transition;
+
+  &:hover {
+    color: @color-accent-hover;
+  }
+}
+
+.container {
+  max-width: @container-max;
+  margin: 0 auto;
+  padding: @container-padding;
+}
+
+.section {
+  padding: @section-padding;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: @font-mono;
+  font-size: 0.72rem;
+  color: @color-accent;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: @color-accent;
+    opacity: 0.6;
+  }
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: @color-text;
+  margin-bottom: 52px;
+  letter-spacing: -1px;
+  line-height: 1.15;
+}
+
+// ── Button ─────────────────────────────────────────────────────────────────────
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.01em;
+  transition: background @transition, color @transition, box-shadow @transition, transform @transition, border-color @transition;
+
+  &--primary {
+    background: @color-accent;
+    color: var(--color-bg);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-accent) 20%, transparent);
+
+    &:hover {
+      background: @color-accent-hover;
+      color: var(--color-bg);
+      box-shadow: 0 0 32px color-mix(in srgb, var(--color-accent) 32%, transparent);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--outline {
+    border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+    color: @color-text;
+    background: @color-surface;
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+      color: @color-accent;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// ── Scroll reveal animations ──────────────────────────────────────────────────
+
+@reveal-ease:        cubic-bezier(0.22, 1, 0.36, 1);
+@reveal-ease-sharp:  cubic-bezier(0.77, 0, 0.175, 1);
+
+// Base slide-up
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+// Slide-up + scale pop (project cards)
+@keyframes reveal-up-scale {
+  from { opacity: 0; transform: translateY(28px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+// Slide in from left (bio card)
+@keyframes reveal-left {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+// Clip-path curtain wipe (section labels)
+@keyframes reveal-clip {
+  from { opacity: 0; clip-path: inset(0 105% 0 0); }
+  to   { opacity: 1; clip-path: inset(0 0%   0 0); }
+}
+
+// Blur focus-in (hero name)
+@keyframes hero-blur-in {
+  from { opacity: 0; filter: blur(10px); transform: translateY(10px); }
+  to   { opacity: 1; filter: blur(0);   transform: translateY(0);    }
+}
+
+// Fade only (footer)
+@keyframes reveal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+// Plain slide for hero greeting / buttons
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+// Word-by-word hero tagline
+@keyframes hero-word-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+// ── Utility classes ───────────────────────────────────────────────────────────
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  &.is-visible {
+    animation: reveal-up 0.65s @reveal-ease both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+.reveal--left {
+  opacity: 0;
+  transform: translateX(-28px);
+  &.is-visible {
+    animation: reveal-left 0.7s @reveal-ease both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+.reveal--clip {
+  opacity: 0;
+  clip-path: inset(0 105% 0 0);
+  &.is-visible {
+    animation: reveal-clip 0.75s @reveal-ease-sharp both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+.reveal--fade {
+  opacity: 0;
+  &.is-visible {
+    animation: reveal-fade 0.65s @reveal-ease both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+// Stagger: plain slide-up (skill groups)
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal-stagger.is-visible > * {
+  animation: reveal-up 0.6s @reveal-ease both;
+}
+.reveal-stagger.is-visible > *:nth-child(1) { animation-delay: 0ms;   }
+.reveal-stagger.is-visible > *:nth-child(2) { animation-delay: 80ms;  }
+.reveal-stagger.is-visible > *:nth-child(3) { animation-delay: 160ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { animation-delay: 240ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { animation-delay: 320ms; }
+
+// Stagger: scale pop (project cards)
+.reveal-stagger--scale > * {
+  opacity: 0;
+  transform: translateY(28px) scale(0.94);
+}
+.reveal-stagger--scale.is-visible > * {
+  animation: reveal-up-scale 0.65s @reveal-ease both;
+}
+.reveal-stagger--scale.is-visible > *:nth-child(1) { animation-delay: 0ms;   }
+.reveal-stagger--scale.is-visible > *:nth-child(2) { animation-delay: 100ms; }
+.reveal-stagger--scale.is-visible > *:nth-child(3) { animation-delay: 200ms; }
+
+// ── Hero animations ───────────────────────────────────────────────────────────
+
+.hero-animate {
+  animation: hero-enter 0.7s @reveal-ease both;
+}
+
+.hero-blur-in {
+  animation: hero-blur-in 1s @reveal-ease both;
+}
+
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: hero-word-enter 0.5s @reveal-ease both;
+  margin-right: 0.28em;
+  &:last-child { margin-right: 0; }
+}
+
+// ── Reduced motion ─────────────────────────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal--left, .reveal--clip, .reveal--fade,
+  .reveal-stagger > *, .reveal-stagger--scale > *,
+  .hero-animate, .hero-blur-in, .hero-word {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    animation: none !important;
+  }
+}

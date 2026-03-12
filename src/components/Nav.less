@@ -1,0 +1,116 @@
+@import '../styles/variables.less';
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background: color-mix(in srgb, var(--color-bg) 75%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+
+  &__logo {
+    font-family: @font-mono;
+    font-size: 1rem;
+    font-weight: 700;
+    color: @color-text;
+    letter-spacing: -0.5px;
+
+    span {
+      color: @color-accent;
+    }
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+    align-items: center;
+
+    a {
+      font-size: 0.85rem;
+      color: @color-text-muted;
+      letter-spacing: 0.3px;
+      transition: color @transition;
+
+      &:hover {
+        color: @color-text;
+      }
+    }
+  }
+
+  &__theme-btn {
+    background: none;
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: @color-text;
+    font-size: 0.82rem;
+    font-family: @font-mono;
+    transition: color @transition, border-color @transition;
+    line-height: 1;
+
+    &:hover {
+      color: @color-accent;
+      border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
+    }
+  }
+}
+
+// Sun / moon icon animations
+.sun-rays {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.theme-toggle:hover .sun-rays {
+  animation: sun-spin 16s linear infinite;
+}
+
+@keyframes sun-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.moon-body {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.theme-toggle:hover .moon-body {
+  animation: moon-twist 0.5s ease-out forwards;
+}
+
+@keyframes moon-twist {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(12deg); }
+}
+
+.moon-star-1, .moon-star-2, .moon-star-3 {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.theme-toggle:hover .moon-star-1 {
+  animation: star-twinkle 2.2s ease-in-out infinite;
+}
+
+.theme-toggle:hover .moon-star-2 {
+  animation: star-twinkle 2.2s ease-in-out infinite 0.8s;
+}
+
+.theme-toggle:hover .moon-star-3 {
+  animation: star-twinkle 2.2s ease-in-out infinite 1.6s;
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.2; transform: scale(0.6); }
+}

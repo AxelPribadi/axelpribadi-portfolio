@@ -1,0 +1,51 @@
+// ── Theme tokens ───────────────────────────────────────────────
+:root {
+  --color-bg:           #080c10;
+  --color-batik:        #14b8a6;
+  --color-surface:      #0d1520;
+  --color-surface-2:    #131e2c;
+  --color-border:       #1d2d3e;
+  --color-accent:       #14b8a6;
+  --color-accent-hover: #0d9488;
+  --color-text:         #e2eaf4;
+  --color-text-muted:   #5d7a96;
+  --color-text-dim:     #243040;
+}
+
+[data-theme="light"] {
+  --color-bg:           #f0f4f8;
+  --color-batik:        #14b8a6;
+  --color-surface:      #ffffff;
+  --color-surface-2:    #e4eaf1;
+  --color-border:       #c4d2e0;
+  --color-accent:       #14b8a6;
+  --color-accent-hover: #0d9488;
+  --color-text:         #0f1923;
+  --color-text-muted:   #4a6580;
+  --color-text-dim:     #94a3b8;
+}
+
+// ── LESS aliases (used by fade() replacements & direct refs) ───
+@color-bg:           var(--color-bg);
+@color-batik:        var(--color-batik);
+@color-surface:      var(--color-surface);
+@color-surface-2:    var(--color-surface-2);
+@color-border:       var(--color-border);
+@color-accent:       var(--color-accent);
+@color-accent-hover: var(--color-accent-hover);
+@color-text:         var(--color-text);
+@color-text-muted:   var(--color-text-muted);
+@color-text-dim:     var(--color-text-dim);
+
+// ── Typography ─────────────────────────────────────────────────
+@font-base: 'Inter', system-ui, sans-serif;
+@font-mono: 'Fira Code', monospace;
+
+// ── Spacing ────────────────────────────────────────────────────
+@section-padding:   90px 0;
+@container-max:     1160px;
+@container-padding: 0 14px;
+
+// ── Transitions ────────────────────────────────────────────────────
+@transition: 0.2s ease;
+
