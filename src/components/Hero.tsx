@@ -16,8 +16,8 @@ export default function Hero() {
           ))}
         </p>
         <div className="hero__actions hero-animate" style={{ animationDelay: '800ms' }}>
-          <a href="#projects" className="btn btn--primary">Get in Touch</a>
-          <a href="#contact" className="btn btn--outline">View my Projects</a>
+          <a href="#contact" className="btn btn--primary">Get in Touch</a>
+          <a href="#projects" className="btn btn--outline">View my Projects</a>
         </div>
       </div>
     </section>
