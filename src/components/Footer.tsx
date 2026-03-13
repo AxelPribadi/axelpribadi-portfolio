@@ -7,7 +7,7 @@ import EmailIcon from './icons/footer/Email'
 const navLinks = ['Home', 'About', 'Projects', 'Contact']
 
 const socialLinks = [
-  { label: 'GitHub',      icon: <GitHubIcon />,      href: 'https://github.com/AxelPribadi',           external: true  },
+  { label: 'GitHub',      icon: <GitHubIcon />,      href: 'https://github.com/AxelPribadi',            external: true  },
   { label: 'LinkedIn',    icon: <LinkedInIcon />,    href: 'https://www.linkedin.com/in/axel-pribadi/', external: true  },
   { label: 'HuggingFace', icon: <HuggingFaceIcon />, href: 'https://huggingface.co/pvtax',              external: true  },
   { label: 'Email',       icon: <EmailIcon />,       href: '#contact',                                  external: false },
