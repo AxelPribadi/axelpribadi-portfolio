@@ -18,7 +18,7 @@ export default function Nav() {
     localStorage.setItem('theme', theme)
   }, [theme])
 
-const toggle = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
+  const toggle = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
   const closeMenu = () => setMenuOpen(false)
 
   return (
@@ -35,7 +35,7 @@ const toggle = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
         </ul>
 
         <div className="nav__actions">
-          <button className="nav__theme-btn theme-toggle" onClick={toggle} aria-label="Toggle theme">
+          <button className="nav__theme-btn" onClick={toggle} aria-label="Toggle theme">
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
           </button>
           <button
