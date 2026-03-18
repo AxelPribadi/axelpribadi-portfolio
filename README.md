@@ -1,20 +1,27 @@
-# axelpribadi.dev
+# axelp.id
 
-Personal portfolio website for Axel Pribadi — data scientist building applied AI systems.
+My personal portfolio website — a single-page application showcasing my projects.
 
 ## Stack
 
 - **React 19** + **TypeScript**
 - **Vite** — build tooling and dev server
 - **Less** — scoped component styles and design tokens
-- **vite-plugin-svgr** — SVG files imported as inline React components
+- **@vercel/analytics** + **@vercel/speed-insights** — page analytics and performance monitoring
+
+## Features
+
+- Dark / light theme toggle with `localStorage` persistence and `prefers-color-scheme` fallback
+- Scroll reveal animations (slide-up, slide-left, clip-path wipe, blur focus-in, stagger)
+- Dynamic **Projects** section powered by the GitHub API — pulls live repo data, tech tags, and last-updated dates
+- **Contact form** with Web3Forms and h-captcha verification 
+- Fully responsive layout with mobile hamburger navigation
 
 ## Project Structure
 
 ```
 src/
-  assets/
-    images/          # SVG icons and background images
+  assets/            # Background and misc images
   components/        # Page sections, each with a co-located .less file
     Nav.tsx/.less
     Hero.tsx/.less
@@ -22,8 +29,12 @@ src/
     Projects.tsx/.less
     Contact.tsx/.less
     Footer.tsx/.less
+  icons/
+    about/           # AI, data science, coding, and tools icon components
+    footer/          # Social media icon components
+    project/         # GitHub and external-link icon components
   hooks/
-    useScrollReveal.ts   # IntersectionObserver-based scroll animation hook
+    useScrollReveal.ts   # IntersectionObserver-based scroll 
   styles/
     global.less      # Animations, utility classes, base styles
     variables.less   # CSS custom properties and LESS aliases
@@ -31,14 +42,6 @@ src/
   main.tsx
   vite-env.d.ts
 ```
-
-## Features
-
-- Dark / light theme toggle with `localStorage` persistence and `prefers-color-scheme` fallback
-- Scroll reveal animations (slide-up, slide-left, clip-path wipe, blur focus-in, stagger)
-- Batik Kawung SVG background pattern as a masked overlay
-- Contact form with Name, Email, and Message fields
-- Fully responsive layout
 
 ## Getting Started
 
@@ -52,10 +55,18 @@ pnpm build    # type-check + production build
 pnpm preview  # preview the production build locally
 ```
 
+## Environment Variables
+
+Create a `.env` file in the root:
+
+```
+VITE_WEB3FORMS_KEY=your_web3forms_access_key
+```
+
 ## Adding Icons
 
-Icons live in `src/assets/images/` as plain `.svg` files using `currentColor` for theming. Import them as inline React components via the `?react` suffix:
+Icons live in `src/components/icons/` as `.tsx` React components using `currentColor` for theming:
 
 ```tsx
-import BrainIcon from '../assets/images/brain2.svg?react'
+import Brain from './icons/about/Brain'
 ```
