@@ -4,12 +4,16 @@
   background: @color-surface;
   border-top: 1px solid @color-border;
 
+  &__form-wrap {
+    position: relative;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    max-width: 560px;
-    margin: 0 auto;
   }
 
   &__form-group {
@@ -53,4 +57,25 @@
     resize: vertical;
     min-height: 120px;
   }
+
+  &__toast {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface-2));
+    border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    color: @color-text;
+    z-index: 10;
+    white-space: nowrap;
+    animation: toast-in 0.2s ease;
+  }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
 }

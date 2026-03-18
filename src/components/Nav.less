@@ -45,6 +45,49 @@
     }
   }
 
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+
+    span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: @color-text;
+      border-radius: 2px;
+      transition: transform @transition, opacity @transition;
+    }
+
+    &--open {
+      span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      span:nth-child(2) { opacity: 0; }
+      span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+  }
+
+  &__dropdown {
+    display: none;
+  }
+
   &__theme-btn {
     background: none;
     border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
@@ -62,6 +105,45 @@
       border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
     }
   }
+  @media (max-width: 640px) {
+    padding: 14px 24px;
+    flex-wrap: wrap;
+
+    &__hamburger {
+      display: flex;
+    }
+
+    &__links {
+      display: none;
+    }
+
+    &__dropdown {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 0;
+      list-style: none;
+      border-top: 1px solid color-mix(in srgb, var(--color-border) 40%, transparent);
+      padding: 8px 0;
+
+      &--open {
+        display: flex;
+      }
+
+      li a {
+        display: block;
+        padding: 12px 4px;
+        font-size: 0.95rem;
+        color: @color-text-muted;
+        letter-spacing: 0.3px;
+        transition: color @transition;
+
+        &:hover {
+          color: @color-text;
+        }
+      }
+    }
+  }
 }
 
 // Sun / moon icon animations
@@ -70,7 +152,7 @@
   transform-origin: center;
 }
 
-.theme-toggle:hover .sun-rays {
+.nav__theme-btn:hover .sun-rays {
   animation: sun-spin 16s linear infinite;
 }
 
@@ -84,7 +166,7 @@
   transform-origin: center;
 }
 
-.theme-toggle:hover .moon-body {
+.nav__theme-btn:hover .moon-body {
   animation: moon-twist 0.5s ease-out forwards;
 }
 
@@ -98,15 +180,15 @@
   transform-origin: center;
 }
 
-.theme-toggle:hover .moon-star-1 {
+.nav__theme-btn:hover .moon-star-1 {
   animation: star-twinkle 2.2s ease-in-out infinite;
 }
 
-.theme-toggle:hover .moon-star-2 {
+.nav__theme-btn:hover .moon-star-2 {
   animation: star-twinkle 2.2s ease-in-out infinite 0.8s;
 }
 
-.theme-toggle:hover .moon-star-3 {
+.nav__theme-btn:hover .moon-star-3 {
   animation: star-twinkle 2.2s ease-in-out infinite 1.6s;
 }
 
