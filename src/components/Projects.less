@@ -1,8 +1,6 @@
 @import '../styles/variables.less';
 
 .projects {
-  background: @color-surface;
-  border-top: 1px solid @color-border;
 
   &__grid {
     display: grid;
@@ -21,7 +19,24 @@
   &__footer {
     margin-top: 40px;
     text-align: center;
+    opacity: 0;
   }
+
+  &__error {
+    text-align: center;
+    color: @color-text-muted;
+    padding: 40px 0;
+
+    a {
+      color: @color-accent;
+      text-decoration: underline;
+    }
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
 }
 
 .project-card {
@@ -131,5 +146,32 @@
     color: @color-text-muted;
     font-family: @font-mono;
     text-align: right;
+  }
+
+  &--not-found {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  &__body--not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: @color-text-muted;
+    font-size: 0.875rem;
+  }
+
+  &--skeleton {
+    height: 220px;
+    background: linear-gradient(
+      90deg,
+      @color-surface 25%,
+      @color-surface-2 50%,
+      @color-surface 75%
+    );
+    background-size: 800px 100%;
+    animation: shimmer 1.4s infinite linear;
+    pointer-events: none;
   }
 }

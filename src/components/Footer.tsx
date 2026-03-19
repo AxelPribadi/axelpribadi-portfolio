@@ -16,8 +16,7 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="container">
-        <div className="footer__inner">
+      <div className="footer__inner">
 
           {/* Brand */}
           <div className="footer__brand">
@@ -56,7 +55,6 @@ export default function Footer() {
           </div>
 
         </div>
-      </div>
     </footer>
   )
 }
