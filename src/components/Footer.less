@@ -10,6 +10,9 @@
     grid-template-columns: 1.4fr 1fr 1fr;
     gap: 40px;
     align-items: start;
+    max-width: @container-max;
+    margin: 0 auto;
+    padding: 0 48px;
   }
 
   // ── Brand ──────────────────────────────────────────────────────
@@ -100,6 +103,7 @@
   @media (max-width: 640px) {
     &__inner {
       grid-template-columns: 1fr 1fr;
+      padding: 0 24px;
     }
 
     &__brand {

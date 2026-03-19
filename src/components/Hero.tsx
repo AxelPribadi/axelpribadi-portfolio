@@ -1,6 +1,6 @@
 import './Hero.less'
 
-const taglineWords = 'Data scientist building applied AI systems'.split(' ')
+const taglineWords = 'Architecting data-driven intelligence'.split(' ')
 
 export default function Hero() {
   return (

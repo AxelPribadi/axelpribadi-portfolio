@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://axelp.id/sitemap.xml
