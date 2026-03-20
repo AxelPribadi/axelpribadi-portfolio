@@ -1,5 +1,5 @@
 import './Contact.less'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 export default function Contact() {
@@ -8,6 +8,15 @@ export default function Contact() {
 
   const [result, setResult] = useState("")
   const [submitting, setSubmitting] = useState(false)
+
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://web3forms.com/client/script.js'
+    script.async = true
+    script.defer = true
+    document.body.appendChild(script)
+    return () => { document.body.removeChild(script) }
+  }, [])
 
   const onSubmit: NonNullable<React.ComponentProps<'form'>['onSubmit']> = async (event) => {
     event.preventDefault()

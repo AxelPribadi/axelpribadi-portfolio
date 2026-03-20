@@ -1,7 +1,7 @@
 import './Projects.less'
 import { useEffect, useState } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import GitHubLineIcon from './icons/project/GitHubLine'
+import GitHubOneIcon from './icons/project/GitHubOne'
 import ExternalLinkIcon from './icons/project/ExternalLink'
 
 
@@ -36,11 +36,7 @@ export default function Projects() {
   useEffect(() => {
     Promise.all(
       repos.map(({ repo, tags }) =>
-        fetch(`https://api.github.com/repos/AxelPribadi/${repo}`, {
-          headers: import.meta.env.VITE_GITHUB_TOKEN
-            ? { Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}` }
-            : {},
-        })
+        fetch(`/api/github?repo=${repo}`)
           .then(r => r.json().then(data => r.ok
             ? {
                 title: data.name as string,
@@ -80,7 +76,7 @@ export default function Projects() {
                   </div>
                   <div className="project-card__footer">
                     <div className="project-card__actions">
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-card__github" aria-label="View on GitHub"><GitHubLineIcon /></a>
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-card__github" aria-label="View on GitHub"><GitHubOneIcon /></a>
                       <a href={project.homepage || project.link} target="_blank" rel="noopener noreferrer" className="project-card__github project-card__github--open" aria-label="Open project"><ExternalLinkIcon /><span>Open</span></a>
                     </div>
                     <span className="project-card__updated">Last Updated {project.lastUpdated}</span>
