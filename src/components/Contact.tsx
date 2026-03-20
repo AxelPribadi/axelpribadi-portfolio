@@ -39,6 +39,7 @@ export default function Contact() {
     if (data.success) {
       (event.target as HTMLFormElement).reset()
     }
+    ;(window as Window & { hcaptcha?: { reset: () => void } }).hcaptcha?.reset()
   }
 
   return (
