@@ -6,7 +6,7 @@ import ExternalLinkIcon from './icons/project/ExternalLink'
 
 
 const repos = [
-  // { repo: 'ball-knowledge', tags: ['Python', 'DuckDB', 'Playwright', 'Plotly'] },
+  { repo: 'ball-knowledge', tags: ['Python', 'DuckDB', 'Playwright', 'Plotly'] },
   { repo: 'FileExtractor', tags: ['Python', 'OpenAI', 'Agno', 'LanceDB', 'Chainlit'] },
   { repo: 'axelpribadi-portfolio', tags: ['TypeScript', 'React', 'Less', 'Vite', 'Vercel'] },
   { repo: 'ai-council',    tags: ['Python', 'TypeScript', 'LangGraph', 'LiteLLM'] },
